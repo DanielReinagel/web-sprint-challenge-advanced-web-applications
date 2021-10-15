@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Login = () => {
+const initialState = {
+  username: "",
+  password: "",
+  error: ""
+};
 
+const Login = () => {
+  const [state, setState] = useState(initialState);
+
+  const handleChange = event => {
+    setState({...state, [event.target.id]:event.target.value});
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+  };
     
   return(<ComponentContainer>
     <ModalContainer>
       <h1>Welcome to Blogger Pro</h1>
       <h2>Please enter your account information.</h2>
-      <FormGroup>
-        <Label>Username: <Input type='text' id='username'/></Label>
-        <Label>Password: <Input type='password' id='password'/></Label>
+      <FormGroup onSubmit={handleSubmit}>
+        <Label>Username: <Input type='text' id='username' value={state.username} onChange={handleChange}/></Label>
+        <Label>Password: <Input type='password' id='password' value={state.password} onChange={handleChange}/></Label>
         <Button id='submit'>Submit</Button>
       </FormGroup>
     </ModalContainer>
-    <p id='error'></p>
+    {state.error && <p id='error'>{state.error}</p>}
   </ComponentContainer>);
 }
 
