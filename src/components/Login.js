@@ -2,13 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Login = () => {
+
     
-    return(<ComponentContainer>
-        <ModalContainer>
-            <h1>Welcome to Blogger Pro</h1>
-            <h2>Please enter your account information.</h2>
-        </ModalContainer>
-    </ComponentContainer>);
+  return(<ComponentContainer>
+    <ModalContainer>
+      <h1>Welcome to Blogger Pro</h1>
+      <h2>Please enter your account information.</h2>
+      <FormGroup>
+        <Label>Username: <Input type='text' id='username'/></Label>
+        <Label>Password: <Input type='password' id='password'/></Label>
+        <Button id='submit'>Submit</Button>
+      </FormGroup>
+    </ModalContainer>
+    <p id='error'></p>
+  </ComponentContainer>);
 }
 
 export default Login;
