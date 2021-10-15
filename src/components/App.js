@@ -21,12 +21,12 @@ const App = () => {
         <Route path="/login">
           <Login/>
         </Route>
-        <Route path="/logout">
+        <PrivateRoute path="/logout">
           <Logout/>
-        </Route>
-        <Route path="/view">
+        </PrivateRoute>
+        <PrivateRoute path="/view">
           <View/>
-        </Route>
+        </PrivateRoute>
       </RouteContainer>
     </AppContainer>
   )
