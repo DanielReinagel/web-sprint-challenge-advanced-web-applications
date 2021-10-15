@@ -21,13 +21,16 @@ const mockArticles = num => {
 }
 
 test("renders zero articles without errors", async () => {
-  articleService.mockResolvedValueOnce({data:mockArticles(0)})
+  articleService.mockResolvedValueOnce({data:mockArticles(0)});
   render(<View/>);
+  expect(articleService).toBeCalledTimes(1);
 });
 
 test("renders three articles without errors", async ()=> {
-  articleService.mockResolvedValueOnce({data:mockArticles(3)})
+  articleService.mockClear();
+  articleService.mockResolvedValueOnce({data:mockArticles(3)});
   render(<View/>);
+  expect(articleService).toBeCalledTimes(1);
 });
 
 //Task List
